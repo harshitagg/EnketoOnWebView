@@ -19,5 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.FormActivity"
+            android:parentActivityName="org.ei.enketoonwebview.activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.ei.enketoonwebview.activity.HomeActivity"/>
+        </activity>
     </application>
 </manifest>

@@ -1,6 +1,7 @@
 package org.ei.enketoonwebview.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Pair;
@@ -14,6 +15,8 @@ import org.ei.enketoonwebview.service.EnketoFormDataFetchService;
 
 public class HomeActivity extends Activity {
 
+    public static final String MODEL = "model";
+    public static final String FORM = "form";
     private HttpAgent httpAgent;
     private EnketoFormDataFetchService formDataFetchService;
     private EditText editText;
@@ -38,10 +41,18 @@ public class HomeActivity extends Activity {
         if (!URLUtil.isHttpUrl(url)) {
             Toast.makeText(this, "Invalid URL, please check!!", Toast.LENGTH_SHORT).show();
         }
-        new AsyncTask<String, Void, Pair>() {
+        new AsyncTask<String, Void, Pair<String, String>>() {
             @Override
-            protected Pair doInBackground(String... urls) {
+            protected Pair<String, String> doInBackground(String... urls) {
                 return formDataFetchService.fetch(urls[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Pair<String, String> pair) {
+                Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+                intent.putExtra(MODEL, pair.first);
+                intent.putExtra(FORM, pair.second);
+                startActivity(intent);
             }
         }.execute("http://formhub.org/drishti_forms&form_id=ANC_v701_Copy");
     }
