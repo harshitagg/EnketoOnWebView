@@ -3,5 +3,5 @@
     <string name="app_name">EnketoOnWebView</string>
     <string name="label">Enter form URL:</string>
     <string name="base_url">http://formhub.org/drishti_forms&amp;form_id=ANC_v701_Copy</string>
-    <string name="button_test">Test</string>
+    <string name="button_test">Test form</string>
 </resources>
