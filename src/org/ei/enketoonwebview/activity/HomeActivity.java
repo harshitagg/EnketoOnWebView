@@ -35,6 +35,7 @@ public class HomeActivity extends Activity {
 
     private void initializeView() {
         editText = (EditText) findViewById(R.id.editText);
+        editText.setSelection(editText.getText().length());
     }
 
     public void testForm(View view) {
