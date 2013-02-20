@@ -1,6 +1,7 @@
 package org.ei.enketoonwebview.activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,6 +43,17 @@ public class HomeActivity extends Activity {
             Toast.makeText(this, "Invalid URL, please check!!", Toast.LENGTH_SHORT).show();
         }
         new AsyncTask<String, Void, Pair<String, String>>() {
+            public ProgressDialog progressDialog;
+
+            @Override
+            protected void onPreExecute() {
+                progressDialog = new ProgressDialog(HomeActivity.this);
+                progressDialog.setCancelable(false);
+                progressDialog.setTitle("Fetching form ...");
+                progressDialog.setMessage("Please wait");
+                progressDialog.show();
+            }
+
             @Override
             protected Pair<String, String> doInBackground(String... urls) {
                 return formDataFetchService.fetch(urls[0]);
@@ -52,8 +64,9 @@ public class HomeActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), FormActivity.class);
                 intent.putExtra(MODEL, pair.first);
                 intent.putExtra(FORM, pair.second);
+                progressDialog.dismiss();
                 startActivity(intent);
             }
-        }.execute("http://formhub.org/drishti_forms&form_id=ANC_v701_Copy");
+        }.execute(url);
     }
 }

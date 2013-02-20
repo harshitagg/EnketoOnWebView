@@ -26,12 +26,16 @@ public class FormActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.form_layout);
+
+        getIntentData();
+        progressDialogInitialization();
+        webViewInitialization(this);
+    }
+
+    private void getIntentData() {
         Intent intent = getIntent();
         model = intent.getStringExtra(MODEL);
         form = intent.getStringExtra(FORM);
-
-        progressDialogInitialization();
-        webViewInitialization(this);
     }
 
     private void progressDialogInitialization() {
