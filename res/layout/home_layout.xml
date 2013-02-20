@@ -5,4 +5,24 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label"
+        android:id="@+id/label"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:enabled="true"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/base_url"
+        android:id="@+id/editText"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="5dp"
+        android:focusable="true"
+        android:inputType="textUri"/>
 </LinearLayout>

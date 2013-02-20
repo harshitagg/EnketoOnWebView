@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EnketoOnWebView</string>
+    <string name="label">Enter form URL:</string>
+    <string name="base_url">http://formhub.org/</string>
 </resources>
