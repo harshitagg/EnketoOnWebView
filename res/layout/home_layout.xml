@@ -25,4 +25,13 @@
         android:layout_margin="5dp"
         android:focusable="true"
         android:inputType="textUri"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_test"
+        android:id="@+id/button"
+        android:layout_gravity="center"
+        android:onClick="testForm"
+        android:textSize="20dp"/>
 </LinearLayout>

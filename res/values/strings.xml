@@ -3,4 +3,5 @@
     <string name="app_name">EnketoOnWebView</string>
     <string name="label">Enter form URL:</string>
     <string name="base_url">http://formhub.org/</string>
+    <string name="button_test">Test</string>
 </resources>
