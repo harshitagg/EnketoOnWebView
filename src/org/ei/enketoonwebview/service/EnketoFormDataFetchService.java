@@ -2,6 +2,8 @@ package org.ei.enketoonwebview.service;
 
 import android.util.Pair;
 import org.ei.enketoonwebview.agent.HttpAgent;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -27,14 +29,12 @@ public class EnketoFormDataFetchService {
         InputStream inputStream = httpAgent.fetch(url);
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            org.w3c.dom.Document document1 = documentBuilder.parse(inputStream);
-            org.w3c.dom.Element root = document1.getDocumentElement();
+            Document document = documentBuilder.parse(inputStream);
+            Element root = document.getDocumentElement();
             NodeList nodes = root.getChildNodes();
 
             String model = nodeToString(nodes.item(0));
             String form = nodeToString(nodes.item(1));
-            System.out.println(model);
-            System.out.println(form);
             return new Pair<String, String>(model, form);
         } catch (Exception e) {
             e.printStackTrace();

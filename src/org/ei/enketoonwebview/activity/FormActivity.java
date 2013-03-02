@@ -16,7 +16,6 @@ import static org.ei.enketoonwebview.activity.HomeActivity.MODEL;
 
 
 public class FormActivity extends Activity {
-    private WebView webView;
     private ProgressDialog progressDialog;
     private String model;
     private String form;
@@ -47,7 +46,7 @@ public class FormActivity extends Activity {
     }
 
     private void webViewInitialization(final Activity activity) {
-        webView = (WebView) findViewById(R.id.webview);
+        WebView webView = (WebView) findViewById(org.ei.enketoonwebview.R.id.webview);
 
         webView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
